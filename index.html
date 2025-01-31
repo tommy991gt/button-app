@@ -7,42 +7,98 @@
     <style>
         body {
             display: flex;
-            height: 100vh;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            height: 100vh;
             background-color: #f0f0f0;
+            margin: 0;
         }
-        #container {
+        h1 {
+            margin-bottom: 20px;
+        }
+        .container {
             text-align: center;
+            margin-top: 20px;
         }
-        #message {
+        .message {
             margin-top: 20px;
             font-size: 1.2em;
             color: #333;
             display: none;
         }
+        .slider-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+        input[type="range"] {
+            width: 300px;
+        }
+        .slider-value {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #555;
+        }
         button {
             padding: 10px 20px;
             font-size: 1em;
             cursor: pointer;
+            margin: 10px;
         }
     </style>
 </head>
 <body>
-<div id="container">
+<h1>Resa und Tom Samstag Squash!</h1>
+<div class="container">
+    <button id="yesButton">Ja</button>
+    <button id="noButton">Nein</button>
+    <div id="responseMessage" class="message"></div>
+</div>
+
+<div class="slider-container">
+    <label for="excitementSlider">Wie sehr freust du dich? (1-10)</label>
+    <input type="range" id="excitementSlider" min="1" max="10" value="5">
+    <div class="slider-value">Freude: 5</div>
+</div>
+
+<div class="container" id="container1">
     <button id="myButton">Klick mich Resa!</button>
-    <div id="message">Ich freu mich auf dich!</div>
+    <div id="message" class="message">Wer das liest hat Glück 8! und bekommt am Sonntag früh Pfannkuchen</div>
 </div>
 
 <script>
+    // Button "Ja" und "Nein" Funktionalität
+    document.getElementById('yesButton').addEventListener('click', function() {
+        var response = document.getElementById('responseMessage');
+        response.style.display = 'block';
+        response.style.color = 'blue';
+        response.textContent = "Ich freu mich drauf!";
+    });
+
+    document.getElementById('noButton').addEventListener('click', function() {
+        var response = document.getElementById('responseMessage');
+        response.style.display = 'block';
+        response.style.color = 'blue';
+        response.textContent = "Ungültig, nochmal versuchen!";
+    });
+
+    // Funktionalität für die Buttons im unteren Bereich
     document.getElementById('myButton').addEventListener('click', function() {
         var message = document.getElementById('message');
-        if (message.style.display === 'none') {
+        if (message.style.display === 'none' || message.style.display === '') {
             message.style.display = 'block';
         } else {
             message.style.display = 'none';
         }
     });
+
+    // Regler (Slider) Funktionalität
+    const slider = document.getElementById('excitementSlider');
+    const sliderValueDisplay = document.querySelector('.slider-value');
+    slider.addEventListener('input', function() {
+        sliderValueDisplay.textContent = `Freude: ${slider.value}`;
+    });
+
 </script>
 </body>
 </html>
