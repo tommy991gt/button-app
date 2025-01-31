@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Beispiel</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        #container {
+            text-align: center;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <button id="myButton">Klick mich Resa!</button>
+    <div id="message">Ich freu mich auf dich!</div>
+</div>
+
+<script>
+    document.getElementById('myButton').addEventListener('click', function() {
+        var message = document.getElementById('message');
+        if (message.style.display === 'none') {
+            message.style.display = 'block';
+        } else {
+            message.style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>
